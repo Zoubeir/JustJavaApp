@@ -12,7 +12,7 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends AppCompatActivity {
 
-    int number=0;
+    int quantity=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,24 +27,27 @@ public class MainActivity extends AppCompatActivity {
 
         double coffeePrice = 1.8;
 
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        int qtyOrdered = Integer.parseInt(quantityTextView.getText().toString());
+        double price = quantity * coffeePrice;
 
-        displayPrice(qtyOrdered * coffeePrice);//one cup of coffee is 1.8 Pounds
+        /*TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        int qtyOrdered = Integer.parseInt(quantityTextView.getText().toString());*/
+
+        displayMessage(price);
     }
 
     /**
      * displays the given price on the screen
      * @param number
      */
-    private void displayPrice(double number){
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+    private void displayMessage(double number){
+        TextView priceTextView = findViewById(R.id.price_text_view);
+        String msg = "Total: Rs "+number+"\nThank You!";
+        priceTextView.setText(msg);
     }
 
-    private void displayQty(int number){
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + number);
+    private void displayQty(int qty){
+        TextView quantityTextView =  findViewById(R.id.quantity_text_view);
+        quantityTextView.setText("" + qty);
     }
 
     /**
@@ -52,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view is the button which has been clicked
      */
     public void increment(View view) {
-        int qty = ++number;
+        int qty = ++quantity;
         displayQty(qty);
     }
 
@@ -61,13 +64,13 @@ public class MainActivity extends AppCompatActivity {
      * @param view is the button which has been clicked
      */
     public void decrement(View view){
-         --number;
+         --quantity;
 
          //validating the value to be always >=0
-        if (number<=0){
-            number = 0;
+        if (quantity<=0){
+            quantity = 0;
         }
 
-        displayQty(number);
+        displayQty(quantity);
     }
 }
