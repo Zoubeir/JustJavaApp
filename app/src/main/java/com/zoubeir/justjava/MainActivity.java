@@ -24,28 +24,43 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-
-        double coffeePrice = 1.8;
-
-        double price = quantity * coffeePrice;
-
-        /*TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        int qtyOrdered = Integer.parseInt(quantityTextView.getText().toString());*/
-
-        displayMessage(price);
+        double price = calculatePrice(); //call to method calculate total price of order
+        displayMessage(createOrderSummary(price)); //create and display order summary
     }
 
     /**
-     * displays the given price on the screen
-     * @param number
+     * Calculates the price of the order based on the current quantity.
+     *
+     * @return the price
      */
-    private void displayMessage(double number){
-        TextView priceTextView = findViewById(R.id.price_text_view);
-        String msg = "Total: Rs "+number+"\nThank You!";
-        priceTextView.setText(msg);
+    private double calculatePrice(){
+        double coffeePrice = 1.8;//unit price for a coffee
+        return quantity * coffeePrice; //calculating coffee price
     }
 
-    private void displayQty(int qty){
+    /**
+     * Create an order summary
+     * @param totalPrice of order
+     * @return order summary
+     */
+    private String createOrderSummary(double totalPrice){
+        return "Name: Zoubeir \n"+ "Quantity: "+quantity+"\nTotal: $"+totalPrice+"\nThank you!";
+    }
+
+    /**
+     * displays the order summary
+     * @param msg ordet summary to display
+     */
+    private void displayMessage(String msg){
+        TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(msg);
+    }
+
+    /**
+     * display the quantity chosen by the user
+     * @param qty to display
+     */
+    private void displayQuantity(int qty){
         TextView quantityTextView =  findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + qty);
     }
@@ -56,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void increment(View view) {
         int qty = ++quantity;
-        displayQty(qty);
+        displayQuantity(qty);
     }
 
     /**
@@ -71,6 +86,6 @@ public class MainActivity extends AppCompatActivity {
             quantity = 0;
         }
 
-        displayQty(quantity);
+        displayQuantity(quantity);
     }
 }
