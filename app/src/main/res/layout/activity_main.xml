@@ -9,6 +9,27 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textviewLabelToppings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="toppings"
+        android:textAllCaps="true"
+        />
+
+    <CheckBox
+        android:id="@+id/chkWhippedCream"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:paddingLeft="24dp"
+        android:text="Whipped Cream"
+        android:textSize="16sp"
+        android:tooltipText="Select to add Whipped Cream"
+        />
+
+    <TextView
         android:id="@+id/textviewLabel1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

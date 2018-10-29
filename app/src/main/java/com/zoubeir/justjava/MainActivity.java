@@ -3,6 +3,7 @@ package com.zoubeir.justjava;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -14,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     int quantity=0;
 
-    @Override
+   @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -35,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
      */
     private double calculatePrice(){
         double coffeePrice = 1.8;//unit price for a coffee
+
+        CheckBox whippedCream = findViewById(R.id.chkWhippedCream);
+
+        if(whippedCream.isChecked()){
+            return (quantity * coffeePrice)+2.5;
+        }
+
         return quantity * coffeePrice; //calculating coffee price
     }
 
