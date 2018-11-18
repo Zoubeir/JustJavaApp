@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -74,7 +75,12 @@ public class MainActivity extends AppCompatActivity {
      * @return order summary
      */
     private String createOrderSummary(double totalPrice, boolean hasWhippedCream, boolean hasChocolate) {
-        return "Name: Zoubeir \n" + "Add Whipped Cream? " + hasWhippedCream + "\nAdd Chocolate? " + hasChocolate + "\nQuantity: " + quantity + "\nTotal: $" + totalPrice + "\nThank you!";
+
+
+        //get ref to EditText view
+        EditText txtName = findViewById(R.id.txtName);
+
+        return "Name: " + txtName.getText() + "\nAdd Whipped Cream? " + hasWhippedCream + "\nAdd Chocolate? " + hasChocolate + "\nQuantity: " + quantity + "\nTotal: $" + totalPrice + "\nThank you!";
     }
 
     /**
