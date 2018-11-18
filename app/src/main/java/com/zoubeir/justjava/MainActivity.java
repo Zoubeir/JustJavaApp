@@ -27,11 +27,14 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
 
-        //verify if checkbox selected
+        //get a ref to whippedCream checkbox
         CheckBox whippedCream = findViewById(R.id.chkWhippedCream);
 
+        //get a ref to chocolate checkbox
+        CheckBox chocolate = findViewById(R.id.chkChocolate);
+
         double price = calculatePrice(); //call to method calculate total price of order
-        displayMessage(createOrderSummary(price, whippedCream.isChecked())); //create and display order summary
+        displayMessage(createOrderSummary(price, whippedCream.isChecked(), chocolate.isChecked())); //create and display order summary
 
     }
 
@@ -43,13 +46,25 @@ public class MainActivity extends AppCompatActivity {
     private double calculatePrice(){
         double coffeePrice = 1.8;//unit price for a coffee
 
+        double totalPrice;//total price for a coffee
+
+        //get a ref to whippedCream checkbox
         CheckBox whippedCream = findViewById(R.id.chkWhippedCream);
 
+        //get a ref to chocolate checkbox
+        CheckBox chocolate = findViewById(R.id.chkChocolate);
+
+        //get base price for coffee
+        totalPrice = quantity * coffeePrice;
+
         if(whippedCream.isChecked()){
-            return (quantity * coffeePrice)+2.5;
+            totalPrice += 2.5;
+        }
+        if (chocolate.isChecked()) {
+            totalPrice += 2.0;
         }
 
-        return quantity * coffeePrice; //calculating coffee price
+        return totalPrice; //calculating coffee price
     }
 
     /**
@@ -58,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
      * @param hasWhippedCream to know if user wants whipped cream
      * @return order summary
      */
-    private String createOrderSummary(double totalPrice, boolean hasWhippedCream) {
-        return "Name: Zoubeir \n" + "Add Whipped Cream? " + hasWhippedCream + "\nQuantity: " + quantity + "\nTotal: $" + totalPrice + "\nThank you!";
+    private String createOrderSummary(double totalPrice, boolean hasWhippedCream, boolean hasChocolate) {
+        return "Name: Zoubeir \n" + "Add Whipped Cream? " + hasWhippedCream + "\nAdd Chocolate? " + hasChocolate + "\nQuantity: " + quantity + "\nTotal: $" + totalPrice + "\nThank you!";
     }
 
     /**
