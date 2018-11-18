@@ -45,9 +45,9 @@ public class MainActivity extends AppCompatActivity {
      * @return the price
      */
     private double calculatePrice(){
-        double coffeePrice = 1.8;//unit price for a coffee
+        double coffeeBasePrice = 5;//unit price for a coffee without any toppings
 
-        double totalPrice;//total price for a coffee
+        double totalPrice = 0.0;//hold total price of coffee order
 
         //get a ref to whippedCream checkbox
         CheckBox whippedCream = findViewById(R.id.chkWhippedCream);
@@ -55,17 +55,20 @@ public class MainActivity extends AppCompatActivity {
         //get a ref to chocolate checkbox
         CheckBox chocolate = findViewById(R.id.chkChocolate);
 
-        //get base price for coffee
-        totalPrice = quantity * coffeePrice;
-
+        //verify is user wants whipped cream and add $1 to coffeeBasePrice
         if(whippedCream.isChecked()){
-            totalPrice += 2.5;
-        }
-        if (chocolate.isChecked()) {
-            totalPrice += 2.0;
+            coffeeBasePrice += 1;
         }
 
-        return totalPrice; //calculating coffee price
+        //verify is user wants chocolate and add $2 to coffeeBasePrice
+        if (chocolate.isChecked()) {
+            coffeeBasePrice += 2;
+        }
+
+        //calculate coffee base price per cup
+        totalPrice = coffeeBasePrice * quantity;
+
+        return totalPrice; //calculating total price of order
     }
 
     /**
