@@ -2,6 +2,7 @@ package com.zoubeir.justjava;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -25,8 +26,13 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+
+        //verify if checkbox selected
+        CheckBox whippedCream = findViewById(R.id.chkWhippedCream);
+
         double price = calculatePrice(); //call to method calculate total price of order
-        displayMessage(createOrderSummary(price)); //create and display order summary
+        displayMessage(createOrderSummary(price, whippedCream.isChecked())); //create and display order summary
+
     }
 
     /**
@@ -49,10 +55,11 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Create an order summary
      * @param totalPrice of order
+     * @param hasWhippedCream to know if user wants whipped cream
      * @return order summary
      */
-    private String createOrderSummary(double totalPrice){
-        return "Name: Zoubeir \n"+ "Quantity: "+quantity+"\nTotal: $"+totalPrice+"\nThank you!";
+    private String createOrderSummary(double totalPrice, boolean hasWhippedCream) {
+        return "Name: Zoubeir \n" + "Add Whipped Cream? " + hasWhippedCream + "\nQuantity: " + quantity + "\nTotal: $" + totalPrice + "\nThank you!";
     }
 
     /**
