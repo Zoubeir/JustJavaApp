@@ -1,4 +1,43 @@
 <resources>
     <string name="app_name">JustJava</string>
-    <string name="txtName">Name</string>
+
+    <!-- Hint text for the name textbox -->
+    <string name="username">Name</string>
+
+    <!-- Header text for the List of toppings [CHAR LIMIT=20] -->
+    <string name="toppings">Toppings</string>
+
+    <!-- Name of a topping in the List of toppings [CHAR LIMIT=20] -->
+    <string name="whippedcream">Whipped Cream</string>
+
+    <!-- Name of a topping in the List of toppings [CHAR LIMIT=20] -->
+    <string name="chocolate">Chocolate</string>
+
+    <!-- Header text for the number of coffee to choose [CHAR LIMIT=20] -->
+    <string name="quantity">Quantity</string>
+
+    <!-- Header text for the order summary [CHAR LIMIT=20] -->
+    <string name="ordersummary">Order Summary</string>
+
+    <!-- Text for button to place order [CHAR LIMIT=20] -->
+    <string name="order">Order</string>
+
+    <!-- Text for email subject -->
+    <string name="emailsubject">Coffee is ready!</string>
+
+    <!-- Text to say thank you -->
+    <string name="thanks">Thank You!</string>
+
+    <!-- text used in order summary to indicate if whipped cream topping has been chosen -->
+    <string name="addWhipped">Add Whipped Cream?</string>
+
+    <!-- text used in order summary to indicate if chocolate topping has been chosen -->
+    <string name="addChoco">Add Chocolate?</string>
+
+    <!-- Text used in order summary to indicate order total value -->
+    <string name="total">Total</string>
+
+    <string name="overOrderError">Hey Stop! You can\'t order more than 100 coffees!</string>
+
+
 </resources>

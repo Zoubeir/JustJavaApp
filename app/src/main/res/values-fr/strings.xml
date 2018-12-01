@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JustJava</string>
+    <string name="username">Nom</string>
+    <string name="toppings">Garnitures</string>
+    <string name="whippedcream">Crème Fouettée</string>
+    <string name="chocolate">Chocolat</string>
+    <string name="quantity">Quantité</string>
+    <string name="ordersummary">La Commande</string>
+    <string name="order">Commander</string>
+    <string name="emailsubject">Le café est prêt</string>
+    <string name="thanks">Merci!</string>
+    <string name="addWhipped">Ajouter de la crème fouettée?</string>
+    <string name="addChoco">Ajouter du chocolat?</string>
+    <string name="total">Total</string>
+    <string name="overOrderError">Hey arrête! Vous ne pouvez pas commander plus de 100 cafés!</string>
+
+</resources>
