@@ -39,27 +39,24 @@ public class MainActivity extends AppCompatActivity {
         CheckBox chocolate = findViewById(R.id.chkChocolate);
 
         double price = calculatePrice(); //call to method calculate total price of order
-        //displayMessage(); //create and display order summary
 
+
+        //get the order summary
         String msgToSend = createOrderSummary(price, whippedCream.isChecked(), chocolate.isChecked());
 
+        /*create an intent to send the order summary by email*/
 
         String addresses[] = new String[]{"zoubx7@gmail.com"};//array to hold send to email addresses
-
         Intent intent = new Intent(Intent.ACTION_SENDTO); //e-mail without attachments
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
         intent.putExtra(Intent.EXTRA_EMAIL, addresses);
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Coffee is ready!"); //email subject
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.emailsubject)); //email subject
         intent.putExtra(Intent.EXTRA_TEXT, msgToSend);//email content - message to send
 
+        //check if there's at least one app to handle the intent
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
-
-
-
-
-
 
     }
 
@@ -105,12 +102,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         //get ref to EditText view
-        EditText txtName = findViewById(R.id.txtName);
+        EditText txtName = findViewById(R.id.username);
 
-        return "Name: " + txtName.getText() + "\nAdd Whipped Cream? " + hasWhippedCream + "\nAdd Chocolate? " + hasChocolate + "\nQuantity: " + quantity + "\nTotal: $" + totalPrice + "\nThank you!";
+        return "" + getString(R.string.username) + ": " + txtName.getText() + "\n" + getString(R.string.addWhipped) + hasWhippedCream + "\n" + getString(R.string.addChoco) + hasChocolate + "\n" + getString(R.string.quantity) + ": " + quantity + "\n" + getString(R.string.total) + ": $" + totalPrice + "\n" + getString(R.string.thanks);
     }
 
     /**
+     * [NOT IN USE]
      * displays the order summary
      * @param msg ordet summary to display
      */
@@ -139,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         //validating quantity to be up to 100
         if (quantity > 100) {
             //use a toast to display an error msg
-            Toast toast = Toast.makeText(getApplicationContext(), "Hey Stop! You can't order more than 100 coffees!", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.overOrderError), Toast.LENGTH_SHORT);
             toast.show();
 
             quantity = 100;

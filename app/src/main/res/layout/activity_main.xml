@@ -20,8 +20,6 @@
 
         <TextView
             android:id="@+id/textviewLabelToppings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:text="@string/toppings"
@@ -49,8 +47,6 @@
 
         <TextView
             android:id="@+id/textviewLabel1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/quantity"
             style="@style/HeaderTextStyle" />
@@ -88,8 +84,6 @@
 
         <TextView
             android:id="@+id/textviewLabel2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/ordersummary"
             style="@style/HeaderTextStyle"
